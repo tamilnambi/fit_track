@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 Widget loginTextFields(BuildContext context,double height) {
   TextEditingController _emailField = TextEditingController();
   TextEditingController _passwordField = TextEditingController();
-  bool isObscure = true;
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 10.0),
     child: Column(
@@ -22,11 +21,6 @@ Widget loginTextFields(BuildContext context,double height) {
             focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(width: 2.0, color: primaryPink),
                 borderRadius: BorderRadius.all(Radius.circular(12.0))),
-            prefixIcon: const Icon(
-              Icons.email,
-              color: primaryPink,
-              size: 30.0,
-            ),
             hintText: "Email",
             hintStyle: const TextStyle(color: primaryPink),
           ),
@@ -35,7 +29,7 @@ Widget loginTextFields(BuildContext context,double height) {
         TextFormField(
           textAlign: TextAlign.center,
           controller: _passwordField,
-          obscureText: isObscure,
+          obscureText: true,
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(width: 1.0, color: primaryPink),
@@ -44,17 +38,6 @@ Widget loginTextFields(BuildContext context,double height) {
             focusedBorder: OutlineInputBorder(
                 borderSide: const BorderSide(width: 2.0, color: primaryPink),
                 borderRadius: BorderRadius.circular(12.0)),
-            prefixIcon: IconButton(
-              onPressed: () {
-                isObscure = !isObscure;
-              },
-              icon: Icon(isObscure
-                    ? Icons.visibility
-                    : Icons.visibility_off,
-                color: primaryPink,
-                size: 30.0,
-              ),
-            ),
             hintText: "Password",
             hintStyle: const TextStyle(color: primaryPink),
           ),
