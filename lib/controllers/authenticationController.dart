@@ -1,11 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../data/constants.dart';
+import 'databaseController.dart';
+
 class AuthenticationController{
 
   final auth = FirebaseAuth.instance;
+  final dbController = DatabaseController();
 
   Future logInWithDetails(String email, String password) async{
     try {
+      userEmail = email;
       await auth.signInWithEmailAndPassword(
           email: email, password: password);
     }
@@ -23,12 +28,15 @@ class AuthenticationController{
     }
   }
 
-  Future<void> createAccount(String email, String password) async{
+  Future<bool> createAccount(String username,String email, String password) async{
     try{
       await auth.createUserWithEmailAndPassword(email: email, password: password);
+      await dbController.setUsername(username,email);
+      return true;
     }
     on FirebaseAuthException catch(e){
       print('tamil $e');
+      return false;
     }
   }
 

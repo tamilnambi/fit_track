@@ -1,5 +1,7 @@
 import 'package:fit_track/controllers/authenticationController.dart';
 import 'package:fit_track/screens/components/customTextField.dart';
+import 'package:fit_track/screens/homePage.dart';
+import 'package:fit_track/screens/loginPage.dart';
 import 'package:flutter/material.dart';
 
 import '../data/constants.dart';
@@ -61,8 +63,12 @@ class _CreateAccountState extends State<CreateAccount> {
               ),
               CustomButton(
                 onPress: () async{
-                  await authController.createAccount(_emailController.text,
+                  final isCreated = await authController.createAccount(_usernameController.text,
+                      _emailController.text,
                       _passwordController.text);
+                  if(isCreated){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                  }
                 },
                 textColor: Colors.white,
                 backgroundColor: secondaryPurple,

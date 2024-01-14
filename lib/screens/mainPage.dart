@@ -13,12 +13,13 @@ class MainPage extends StatelessWidget {
       body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
-          if(snapshot.hasData){
-            print('tamil has data');
+          if(snapshot.connectionState == ConnectionState.waiting){
+            return const CircularProgressIndicator();
+          }
+          else if(snapshot.hasData){
             return const HomePage();
           }
           else{
-            print('tamil has not data');
             return const LoginPage();
           }
         },
