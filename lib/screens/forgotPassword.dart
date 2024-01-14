@@ -1,3 +1,4 @@
+import 'package:fit_track/controllers/authenticationController.dart';
 import 'package:fit_track/screens/components/customLink.dart';
 import 'package:fit_track/screens/components/customTextField.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +13,10 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
-  TextEditingController _emailField = TextEditingController();
+  final _emailField = TextEditingController();
+  final authController = AuthenticationController();
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
@@ -40,7 +41,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 height: height*0.02,
               ),
               CustomButton(
-                onPress: (){},
+                onPress: () async {
+                 await authController.resetPassword(_emailField.text);
+                },
                 textColor: Colors.white,
                 backgroundColor: secondaryPurple,
                 text: 'Reset Password',

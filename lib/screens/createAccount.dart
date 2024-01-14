@@ -1,3 +1,4 @@
+import 'package:fit_track/controllers/authenticationController.dart';
 import 'package:fit_track/screens/components/customTextField.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +14,10 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final authController = AuthenticationController();
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +60,10 @@ class _CreateAccountState extends State<CreateAccount> {
                 height: height * 0.02,
               ),
               CustomButton(
-                onPress: () {},
+                onPress: () async{
+                  await authController.createAccount(_emailController.text,
+                      _passwordController.text);
+                },
                 textColor: Colors.white,
                 backgroundColor: secondaryPurple,
                 text: 'Create Account',

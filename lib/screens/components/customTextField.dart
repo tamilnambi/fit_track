@@ -5,7 +5,8 @@ import '../../data/constants.dart';
 class CustomTextField extends StatelessWidget {
   final controller;
   final hintText;
-  const CustomTextField({super.key, this.controller, this.hintText});
+  final isObscure;
+  const CustomTextField({super.key, this.controller, this.hintText, this.isObscure});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class CustomTextField extends StatelessWidget {
       child: TextFormField(
         textAlign: TextAlign.center,
         controller: controller,
-        obscureText: true,
+        obscureText: isObscure ?? false,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(width: 1.0, color: primaryPink),
