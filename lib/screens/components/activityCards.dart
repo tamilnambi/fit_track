@@ -14,9 +14,6 @@ class _ActivityCardsState extends State<ActivityCards> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    return ChangeNotifierProvider(
-        create: (context) => ActivityProvider(),
-        builder:(context,child){
         return Column(
           children: [
             HomePageCard(
@@ -59,6 +56,6 @@ class _ActivityCardsState extends State<ActivityCards> {
             ),
           ],
         );}
-    );
+
   }
-}
+

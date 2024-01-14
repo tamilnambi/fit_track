@@ -1,14 +1,12 @@
 import 'package:fit_track/controllers/authenticationController.dart';
 import 'package:fit_track/controllers/databaseController.dart';
 import 'package:fit_track/data/constants.dart';
-import 'package:fit_track/providers/activityProvider.dart';
 import 'package:fit_track/screens/components/badgesList.dart';
 import 'package:fit_track/screens/components/customButton.dart';
 import 'package:fit_track/screens/components/titleText.dart';
 import 'package:fit_track/screens/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:provider/provider.dart';
 
 import 'components/activityCards.dart';
 
@@ -23,13 +21,13 @@ class _HomePageState extends State<HomePage> {
   final authController = AuthenticationController();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     getUsername();
   }
 
-  Future<void> getUsername() async{
-    username = await DatabaseController().getUsername(userEmail);
+  Future<void> getUsername() async {
+    await authController.getUsername();
   }
 
   @override

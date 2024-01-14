@@ -9,7 +9,6 @@ class DatabaseController{
   }
 
   Future<String> getUsername(String email) async{
-    print('tamil inside');
     try{
       final user = await userDetails.doc(email).get();
       if (user.exists) {

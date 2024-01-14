@@ -48,4 +48,8 @@ class AuthenticationController{
       print('tamil $e');
     }
   }
+
+  Future<void> getUsername() async{
+    username = await DatabaseController().getUsername(auth.currentUser!.email.toString());
+  }
 }

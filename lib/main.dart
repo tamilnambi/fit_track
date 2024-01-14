@@ -1,8 +1,10 @@
+import 'package:fit_track/providers/activityProvider.dart';
 import 'package:fit_track/screens/homePage.dart';
 import 'package:fit_track/screens/mainPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async{
@@ -19,12 +21,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+        create: (context) => ActivityProvider(),
+    builder:(context,child){
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const MainPage(),
-      theme: ThemeData(
-        textTheme: GoogleFonts.robotoTextTheme(),
-      ),
+    debugShowCheckedModeBanner: false,
+    home: const MainPage(),
+    theme: ThemeData(
+    textTheme: GoogleFonts.robotoTextTheme(),
+    ),
     );
+    });
   }
 }
