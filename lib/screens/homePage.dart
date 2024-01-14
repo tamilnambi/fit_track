@@ -1,13 +1,16 @@
 import 'package:fit_track/controllers/authenticationController.dart';
 import 'package:fit_track/controllers/databaseController.dart';
 import 'package:fit_track/data/constants.dart';
+import 'package:fit_track/providers/activityProvider.dart';
 import 'package:fit_track/screens/components/badgesList.dart';
 import 'package:fit_track/screens/components/customButton.dart';
-import 'package:fit_track/screens/components/homePageCard.dart';
 import 'package:fit_track/screens/components/titleText.dart';
 import 'package:fit_track/screens/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
+
+import 'components/activityCards.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -110,18 +113,8 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: height*0.02,
             ),
-            HomePageCard(titleText: 'You have walked', time: '0', distance: '0'),
-            SizedBox(
-              height: height*0.035,
-            ),
-            HomePageCard(titleText: 'You have ran', time: '0', distance: '0'),
-            SizedBox(
-              height: height*0.035,
-            ),
-            HomePageCard(titleText: 'You have cycled', time: '0', distance: '0'),
-            SizedBox(
-              height: height*0.035,
-            ),
+            ActivityCards(),
+
           ],
         ),),
       ),

@@ -4,9 +4,11 @@ import '../../data/constants.dart';
 
 class HomePageCard extends StatelessWidget {
   final String titleText;
-  final String time;
-  final String distance;
-  const HomePageCard({super.key, required this.titleText, required this.time, required this.distance});
+  final String subText1;
+  final String subValue1;
+  final String subText2;
+  final String subValue2;
+  const HomePageCard({super.key, required this.titleText, required this.subText1, required this.subText2, required this.subValue1, required this.subValue2});
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +45,12 @@ class HomePageCard extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(time,style: TextStyle(
+                    Text(subValue1,style: TextStyle(
                       color: lightBlue,
                       fontSize: height*0.075,
                       fontWeight: FontWeight.bold,
                     ),),
-                    Text('km', style: TextStyle(color: darkBlue,
+                    Text(subText1, style: TextStyle(color: darkBlue,
                         fontWeight: FontWeight.bold,
                         fontSize: height*0.02),)
                   ],
@@ -56,12 +58,12 @@ class HomePageCard extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(distance,style: TextStyle(
+                    Text(subValue2,style: TextStyle(
                       color: lightBlue,
                       fontSize: height*0.075,
                       fontWeight: FontWeight.bold,
                     ),),
-                    Text('min', style: TextStyle(color: darkBlue,
+                    Text(subText2, style: TextStyle(color: darkBlue,
                         fontWeight: FontWeight.bold,
                         fontSize: height*0.02),)
                   ],
