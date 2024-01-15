@@ -84,6 +84,7 @@ class _CreateGoalState extends State<CreateGoal> {
                 GestureDetector(
                   onTap: (){
                     saveGoal(textController.text);
+                    Navigator.pop(context);
                   },
                   child: Container(
                     padding: EdgeInsets.all(16),
