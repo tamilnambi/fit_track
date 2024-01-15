@@ -4,6 +4,7 @@ import 'package:fit_track/screens/components/customLink.dart';
 import 'package:fit_track/screens/components/customTextField.dart';
 import 'package:fit_track/screens/createAccount.dart';
 import 'package:fit_track/screens/forgotPassword.dart';
+import 'package:fit_track/screens/homePage.dart';
 import 'package:flutter/material.dart';
 
 import '../controllers/authenticationController.dart';
@@ -71,8 +72,9 @@ class _LoginPageState extends State<LoginPage> {
             ),
             CustomButton(
               onPress: () {
-                authController.logInWithDetails(_emailController.text.trim(),
-                    _passwordController.text.trim());
+                login();
+                Navigator.push(context, 
+                MaterialPageRoute(builder: (context)=>HomePage()));
               },
               textColor: Colors.white,
               backgroundColor: secondaryPurple,
@@ -94,5 +96,10 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  Future<void> login() async{
+    await authController.logInWithDetails(_emailController.text.trim(),
+        _passwordController.text.trim());
   }
 }

@@ -28,11 +28,12 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> getUsername() async {
     await authController.getUsername();
+    setState(() {
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -61,7 +62,6 @@ class _HomePageState extends State<HomePage> {
       ),
 
       appBar: AppBar(
-        
       ),
       body: SingleChildScrollView(
         child: Padding(padding: EdgeInsets.all(10.0),

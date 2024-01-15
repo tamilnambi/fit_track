@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:sensors_plus/sensors_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ActivityProvider with ChangeNotifier {
   int _stepCount = 0;
@@ -24,6 +25,19 @@ class ActivityProvider with ChangeNotifier {
   ActivityProvider() {
     // Initialize sensor listeners
     startSensorListening();
+    loadActivityData();
+  }
+
+  void loadActivityData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _stepCount = prefs.getInt('stepCount') ?? 0;
+    _runningCount = prefs.getInt('runningCount') ?? 0;
+    _cyclingCount = prefs.getInt('cyclingCount') ?? 0;
+
+    _walkingDistance = prefs.getDouble('walkingDistance') as double ?? 0.0;
+    _runningDistance = prefs.getDouble('runningDistance') as double ?? 0.0;
+    _cyclingDistance = prefs.getDouble('cyclingDistance') as double ?? 0.0;
+    notifyListeners();
   }
 
   void startSensorListening() {
@@ -50,8 +64,20 @@ class ActivityProvider with ChangeNotifier {
     _runningDistance = _runningCount * 0.75 / 1000.0;
     _cyclingDistance = _cyclingCount * 0.75 / 1000.0;
 
+    saveActivityData();
     // Notify listeners when activity data changes
     notifyListeners();
+  }
+
+  void saveActivityData() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('stepCount', _stepCount);
+    prefs.setInt('runningCount', _runningCount);
+    prefs.setInt('cyclingCount', _cyclingCount);
+
+    prefs.setDouble('walkingDistance', _walkingDistance);
+    prefs.setDouble('runningDistance', _runningDistance);
+    prefs.setDouble('cyclingDistance', _cyclingDistance);
   }
 
 }

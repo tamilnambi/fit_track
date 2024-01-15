@@ -15,7 +15,7 @@ class AuthenticationController{
           email: email, password: password);
     }
     on FirebaseAuthException catch(e){
-      print('tamil $e');
+      print('$e');
     }
   }
 
@@ -24,7 +24,7 @@ class AuthenticationController{
       await auth.signOut();
     }
     on FirebaseAuthException catch(e){
-      print('tamil $e');
+      print('$e');
     }
   }
 
@@ -35,7 +35,7 @@ class AuthenticationController{
       return true;
     }
     on FirebaseAuthException catch(e){
-      print('tamil $e');
+      print('$e');
       return false;
     }
   }
@@ -45,7 +45,7 @@ class AuthenticationController{
       await auth.sendPasswordResetEmail(email: email);
     }
     on FirebaseAuthException catch(e){
-      print('tamil $e');
+      print('$e');
     }
   }
 

@@ -1,5 +1,4 @@
 import 'package:fit_track/providers/activityProvider.dart';
-import 'package:fit_track/screens/homePage.dart';
 import 'package:fit_track/screens/mainPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,6 +11,7 @@ Future<void> main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(const MyApp());
 }
 
