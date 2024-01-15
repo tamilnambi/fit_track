@@ -20,8 +20,9 @@
 
   # Known Issues
 
-  * While setting a goal, if the text field is out of focus after entering input, input gets erased.
-  * While displaying the stored goals, FutureBuilder throws Exception.
+  * While setting a goal, if the text field is out of focus after entering input, the input gets erased.
+  * While displaying the stored goals, FutureBuilder throws an Exception.
+  * Adjusting the threshold values for the activities to distinguish those separately.
 
  # Screenshots
 ![Screenshot_20240115-095958](https://github.com/tamilnambi/fit_track/assets/123074613/bef71aa8-6c5f-44e3-b6ef-014fb08955f9)
